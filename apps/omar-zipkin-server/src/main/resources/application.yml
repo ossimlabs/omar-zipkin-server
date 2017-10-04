@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: omar-zipkin-server
+
+server:
+  port: 9411
+
+eureka:
+  client:
+    region: default
+    registryFetchIntervalSeconds: 5
+
+logging:
+  level:
+    org:
+      springframework:
+        web: debug
