@@ -52,8 +52,8 @@ repositories {
 
 dependencies {
     compile('org.codehaus.groovy:groovy')
-    compile('io.zipkin.java:zipkin-server:2.1.0')
-    compile('io.zipkin.java:zipkin-ui:2.1.0')
+    compile('io.zipkin.java:zipkin-server:2.0.0')
+    compile('io.zipkin.java:zipkin-ui:2.0.0')
     compile "org.springframework.cloud:spring-cloud-starter-config"
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
