@@ -7,10 +7,12 @@ buildscript {
           "FROM ${project.dockerNamespaceUrl}${project.ext.baseImage}:${project.dockerAppTag}",
           "MAINTAINER DigitalGlobe-RadiantBlue",
           """LABEL com.digitalglobe.version="" """,
+	  """ENV SPRING_CLOUD_CONFIG_ENABLED=true \\
+                       SPRING_CLOUD_DISCOVERY_ENABLED=true """,
           "COPY ${project.name}-${buildVersion}-${buildVersionTag}.jar /home/omar",
           "EXPOSE 9411",
          "WORKDIR /home/omar",
-          "CMD java -Xms256m -Xmx1024m -Dspring.profiles.active=production -Djava.security.egd=file:/dev/./urandom -Dserver.contextPath=/omar-zipkin-server -jar /home/omar/${project.name}-${buildVersion}-${buildVersionTag}.jar"
+         "CMD java -server -Xms256m -Xmx1024m -Djava.awt.headless=true -XX:+CMSClassUnloadingEnabled -XX:+UseGCOverheadLimit -XX:+UnlockExperimentalVMOptions  -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -Djava.security.egd=file:/dev/./urandom -jar ${jarName}"
        ]
      }
 	}
