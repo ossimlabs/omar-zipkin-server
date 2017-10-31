@@ -53,6 +53,9 @@ repositories {
 
 
 dependencies {
+
+    compile "de.codecentric:spring-boot-admin-starter-client:1.5.4"
+
     compile('org.codehaus.groovy:groovy')
     compile('io.zipkin.java:zipkin-server')
     compile('io.zipkin.java:zipkin-autoconfigure-ui')
