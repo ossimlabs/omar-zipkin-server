@@ -2,7 +2,9 @@ def final O2_DEV_HOME = System.getenv('O2_DEV_HOME')
 
 if ( O2_DEV_HOME ) {
 
-include 'omar-zipkin-server-app'
+include 'omar-zipkin-server-app',
+	'omar-core-plugin'
 
 project(':omar-zipkin-server-app').projectDir = "${O2_DEV_HOME}/omar-zipkin-server/apps/omar-zipkin-server-app" as File
+project(':omar-core-plugin').projectDir = "${O2_DEV_HOME}/omar-core/plugins/omar-core-plugin" as File
 }
