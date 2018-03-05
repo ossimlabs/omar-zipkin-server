@@ -1,0 +1,8 @@
+def final O2_DEV_HOME = System.getenv('O2_DEV_HOME')
+
+if ( O2_DEV_HOME ) {
+
+include 'omar-zipkinserver-app'
+
+project(':omar-zipkinserver-app').projectDir = "${O2_DEV_HOME}/omar-zipkinserver/apps/omar-zipkinserver-app" as File
+}
