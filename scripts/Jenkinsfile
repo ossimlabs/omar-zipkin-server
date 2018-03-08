@@ -45,7 +45,7 @@ node(""){
                 // It's important to add --info because of SONARJNKNS-281
                 sh """
                   pushd ${workspaceDir}/${appName}
-                  gradle --info :${appName}-app:sonarqube
+                  gradle --info :${appName}:sonarqube
                   popd
                 """
             }
@@ -65,7 +65,7 @@ node(""){
             {
               sh """
               pushd ${workspaceDir}/${appName}
-              gradle :${appName}-app:artifactoryPublish
+              gradle :${appName}:artifactoryPublish
               popd
               """
             }
@@ -80,7 +80,7 @@ node(""){
             // Run all tasks on the app. This includes pushing to OpenShift and S3.
             sh """
             pushd ${workspaceDir}/${appName}
-            gradle :${appName}-app:${GRADLE_TASK}
+            gradle :${appName}:${GRADLE_TASK}
             popd
             """
         }
