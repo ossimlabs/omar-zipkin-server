@@ -17,14 +17,16 @@ buildscript {
   {
       apply from: System.env.OMAR_COMMON_PROPERTIES
   }
- 
+
   ext {
       springBootVersion = "${springBootV}"
   }
   repositories {
-      mavenLocal()
       maven { url "${ossimMavenProxy}" }
-      mavenCentral()
+      if( Boolean.parseBoolean( System.env.WWW_CONNECTED ) ) {
+        mavenLocal()
+        mavenCentral()
+      }
    }
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -48,9 +50,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-  mavenLocal()
   maven { url "${ossimMavenProxy}" }
-  mavenCentral()
+  if( Boolean.parseBoolean( System.env.WWW_CONNECTED ) ) {
+    mavenLocal()
+    mavenCentral()
+  }
 }
 
 
